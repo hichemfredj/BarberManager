@@ -14,9 +14,11 @@ import java.util.UUID;
 @Validated
 public class RegistrationService {
 
-    //
-    // Dependencies
-    //
+    /*
+
+     Dependencies
+
+    */
 
     private final UserRepository userRepository;
 
@@ -35,11 +37,11 @@ public class RegistrationService {
     // Services
     //
 
-    public void registerStudent(@Valid RegisterDTO registerDTO){
+    public void registerClient(@Valid RegisterDTO registerDTO){
         User user = new User();
 
         user.setUniqueId(UUID.randomUUID());
-        user.setType("STUDENT");
+        user.setType("CLIENT");
         user.setEmail(registerDTO.getEmail());
         user.setPasswordHash(passwordEncoder.encode(registerDTO.getPassword()));
         user.setFirstName(registerDTO.getFirstName());
