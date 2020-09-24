@@ -11,6 +11,6 @@ export class RegisterService {
   constructor(private httpClient : HttpClient) { }
 
   register(registerForm : RegisterForm){
-    return this.httpClient.post(environment.signupUrl, registerForm).subscribe();
+    return this.httpClient.post(environment.signupUrl, registerForm);
   }
 }

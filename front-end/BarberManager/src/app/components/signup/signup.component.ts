@@ -13,6 +13,7 @@ import { MustMatch } from '../utility/must-match-validator';
 export class SignupComponent implements OnInit {
 
   signupForm : FormGroup;
+  emailAlreadyExist = false;
 
   constructor(private formBuilder : FormBuilder, private route : Router, private registerService : RegisterService) { }
 
@@ -45,7 +46,17 @@ export class SignupComponent implements OnInit {
         password: formValue['password']
       }
 
-      this.registerService.register(signupForm);
+      this.registerService.register(signupForm).subscribe(()=>{
+
+      },error=>{
+
+
+          if(error.error.errors[0].defaultMessage){
+            this.emailAlreadyExist = true;
+            console.log(this.emailAlreadyExist); 
+          }
+
+      });
 
       console.log(signupForm);
       
