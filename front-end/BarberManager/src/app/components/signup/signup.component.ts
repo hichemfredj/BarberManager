@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
 
   signupForm : FormGroup;
   emailAlreadyExist = false;
+  isSubmitted = false;
 
   constructor(private formBuilder : FormBuilder, private route : Router, private registerService : RegisterService) { }
 
@@ -27,7 +28,11 @@ export class SignupComponent implements OnInit {
       firstName :['', [Validators.required]],
       lastName :['', [Validators.required]],
       email : ['', [Validators.required, Validators.email]],
-      password : ['', Validators.required],
+      password : [null, Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(18)
+      ])],
       confirmPass : ['', Validators.required]
     },{
       validator : MustMatch('password','confirmPass')
@@ -35,6 +40,9 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitForm(){
+
+    this.isSubmitted = true;
+
     if (this.signupForm.valid) {
 
       const formValue = this.signupForm.value;
@@ -47,20 +55,20 @@ export class SignupComponent implements OnInit {
       }
 
       this.registerService.register(signupForm).subscribe(()=>{
-
+        
       },error=>{
-
-
+                
           if(error.error.errors[0].defaultMessage){
             this.emailAlreadyExist = true;
             console.log(this.emailAlreadyExist); 
           }
-
       });
-
       console.log(signupForm);
-      
     }
+  }
+  
+  getF(){
+    return this.signupForm.controls;
   }
 
 }

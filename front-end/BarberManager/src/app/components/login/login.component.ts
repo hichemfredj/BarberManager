@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginForm } from 'src/app/models/login-form';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { JwtResponse } from 'src/app/models/jwt-response'
+
 
 @Component({
   selector: 'app-login',
@@ -13,11 +15,17 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
 
+  isSubmitted = false;
+
+
   constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService) { }
+
+  authenticated = true;
 
   ngOnInit(): void {
 
     this.initForm();
+    
 
   }
 
@@ -29,6 +37,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitForm(){
+
+    this.isSubmitted = true;
+
     if (this.loginForm.valid) {
 
       const formValue = this.loginForm.value;
@@ -38,7 +49,18 @@ export class LoginComponent implements OnInit {
         password: formValue['password']
       }
 
-      this.loginService.login(loginForm);
+      this.loginService.login(loginForm).subscribe((data:JwtResponse) =>{
+        if(data && data.token && data.userUniqueId){
+          localStorage.setItem('token',data.token);
+          localStorage.setItem('token',data.userUniqueId);
+          this.authenticated = true;
+        }
+      },error=>{
+  
+          console.log(error.message);
+          this.authenticated = false;
+          console.log(this.authenticated);
+      });
 
       console.log(loginForm);
       

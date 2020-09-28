@@ -12,11 +12,18 @@
            <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
                 <input type="text" class="form-control" id="exampleInputFirstName1" formControlName="firstName">
+                <p *ngIf="getF().firstName.hasError('required') && isSubmitted" class="text-danger">
+                    First Name is Mandatory !
+                </p>
+                
             </div>
 
              <div class="form-group">
                 <label for="exampleInputEmail1">Last Name</label>
                 <input type="text" class="form-control" id="exampleInputLastName1" formControlName="lastName">
+                <p *ngIf="getF().lastName.hasError('required') && isSubmitted" class="text-danger">
+                    Last Name is Mandatory !
+                </p>
             </div>
 
             <div class="form-group">
@@ -26,15 +33,32 @@
                 <p *ngIf="emailAlreadyExist" class="text-danger">
                     Email Already registred !
                 </p>
+                <p *ngIf="getF().email.hasError('required') && isSubmitted" class="text-danger">
+                    Email is Mandatory !
+                </p>
+                <p *ngIf="getF().email.invalid && isSubmitted" class="text-danger" >
+                    Email is invalid !
+                </p>
                 
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                <div *ngIf="getF().password.hasError && isSubmitted" class="text-danger">
+                    <div *ngIf="getF().password.hasError('required')">
+                            Password is manadatory
+                    </div>
+                    <div *ngIf="getF().password.hasError('minlength') || getF().password.hasError('maxlength')">
+                        Password must be between 6 and 18 characters.
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputConfirmPassword1">Confirm Password</label>
                 <input type="password" class="form-control" id="exampleInputConfirmPassword1" formControlName="confirmPass">
+                <div *ngIf="getF().confirmPass.hasError('mustMatch') && isSubmitted" class="alert alert-danger">
+                    Password and Confirm Password must be match !
+                </div>
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

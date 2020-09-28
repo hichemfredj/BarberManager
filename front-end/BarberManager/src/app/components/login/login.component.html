@@ -19,6 +19,9 @@
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <p *ngIf="!authenticated" class="text-danger">
+                        Email or password is invalid !
+                    </p>
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
             </form>
