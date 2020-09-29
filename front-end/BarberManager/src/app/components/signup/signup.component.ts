@@ -15,6 +15,9 @@ export class SignupComponent implements OnInit {
   signupForm : FormGroup;
   emailAlreadyExist = false;
   isSubmitted = false;
+  isStudent = false;
+  isEmployer = false;
+
 
   constructor(private formBuilder : FormBuilder, private route : Router, private registerService : RegisterService) { }
 
@@ -54,14 +57,27 @@ export class SignupComponent implements OnInit {
         password: formValue['password']
       }
 
-      this.registerService.register(signupForm).subscribe(()=>{
+      if(this.isStudent){
+        this.registerService.register(signupForm).subscribe(()=>{
         
-      },error=>{
-                
-          if(error.error.errors[0].defaultMessage){
-            this.emailAlreadyExist = true;
-          }
-      });
+        },error=>{
+                  
+            if(error.error.errors[0].defaultMessage){
+              this.emailAlreadyExist = true;
+            }
+        });
+        
+      }else{
+        this.registerService.registerEmployer(signupForm).subscribe(()=>{
+        
+        },error=>{
+                  
+            if(error.error.errors[0].defaultMessage){
+              this.emailAlreadyExist = true;
+            }
+        });
+      }
+      this.route.navigate(['/login']);
       console.log(signupForm);
     }
   }
@@ -69,5 +85,20 @@ export class SignupComponent implements OnInit {
   getF(){
     return this.signupForm.controls;
   }
+
+  isEmployerClicked(){
+
+    this.isStudent = false;
+    this.isEmployer = true;
+    console.log("employer : "+this.isEmployer + "," + "student : "+this.isStudent+";")
+  }
+
+  isStudentClicked(){
+    this.isEmployer = false;
+    this.isStudent = true;
+    console.log("employer : "+this.isEmployer + "," + "student : "+this.isStudent+";")
+  }
+
+
 
 }

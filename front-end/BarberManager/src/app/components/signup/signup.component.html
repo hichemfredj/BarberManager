@@ -4,7 +4,17 @@
         <div class="card-header bg-white">
             <h1 class="text-center">Sign Up</h1>
         </div>
+        <div class="card-header bg-white" class="text-center" >
+            <button type="button" class="btn btn-light" class="text-left" (click)="isStudentClicked()">
+                Student
+            </button>
+            <button type="button" class="btn btn-light" class="text-right" (click)="isEmployerClicked()">
+                Employer
+            </button>
+        </div>
     </div>
+
+ 
 
     <div class="card-body">
         <form [formGroup]="signupForm" (ngSubmit)="onSubmitForm()">

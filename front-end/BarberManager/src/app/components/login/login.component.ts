@@ -50,16 +50,17 @@ export class LoginComponent implements OnInit {
       }
 
       this.loginService.login(loginForm).subscribe((data:JwtResponse) =>{
-        if(data && data.token && data.userUniqueId){
+        if(data && data.token && data.userUniqueId && data.userType){
           localStorage.setItem('token',data.token);
           localStorage.setItem('UserUniqueId',data.userUniqueId);
+          localStorage.setItem('UserType', data.userType);
           this.authenticated = true;
         }
       },error=>{
   
           this.authenticated = false;
       });
-
+      this.router.navigate(['/dashbord']);
       console.log(loginForm);
       
     }

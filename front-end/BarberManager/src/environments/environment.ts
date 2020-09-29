@@ -10,7 +10,8 @@ export const environment = {
   production: false,
   globalUrl: `${link}`,
   loginUrl : `${link}/authenticate`,
-  signupUrl :`${link}/registration/client`
+  signupUrl :`${link}/registration/client`,
+  signupEmployerUrl: `${link}/registration/employer`
 };
 
 /*

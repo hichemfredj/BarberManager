@@ -13,4 +13,8 @@ export class RegisterService {
   register(registerForm : RegisterForm){
     return this.httpClient.post(environment.signupUrl, registerForm);
   }
+
+  registerEmployer(registerForm: RegisterForm){
+    return this.httpClient.post(environment.signupEmployerUrl, registerForm);
+  }
 }
