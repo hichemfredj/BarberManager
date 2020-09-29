@@ -39,6 +39,11 @@ public class RegistrationController {
         registrationService.registerClient(registerDTO);
     }
 
+    @PostMapping("employer")
+    public void registerEmployer(@Valid @RequestBody RegisterDTO registerDTO){
+        registrationService.registerEmployer(registerDTO);
+    }
+
 
 
 

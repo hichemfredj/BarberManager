@@ -52,6 +52,7 @@ public class AuthenticationService {
         if(user.isPresent() && passwordEncoder.matches(loginDTO.getPassword(), user.get().getPasswordHash())){
             String token = jwtProvider.generate(user.get());
             jwtLoginDTO.setUserUniqueId(user.get().getUniqueId());
+            jwtLoginDTO.setUserType(user.get().getType());
             jwtLoginDTO.setToken(token);
 
         }

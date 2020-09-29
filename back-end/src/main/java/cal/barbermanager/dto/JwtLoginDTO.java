@@ -16,6 +16,14 @@ public class JwtLoginDTO {
      */
     private UUID userUniqueId;
 
+
+    /**
+     * Associated authenticated user type
+     * <p>
+     * Redundant but allows for easier retrieval.
+     */
+    private String userType;
+
     /**
      * Generated jwt authentication token
      */

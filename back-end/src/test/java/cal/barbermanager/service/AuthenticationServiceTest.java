@@ -88,6 +88,7 @@ public class AuthenticationServiceTest {
         assertNotNull(jwtLoginDTO);
 
         assertNull(jwtLoginDTO.getUserUniqueId());
+        assertEquals(user.getType(), jwtLoginDTO.getUserType());
         assertNull(jwtLoginDTO.getToken());
     }
 

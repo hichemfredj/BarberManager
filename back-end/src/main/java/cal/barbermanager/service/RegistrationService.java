@@ -51,6 +51,23 @@ public class RegistrationService {
 
     }
 
+    public void registerEmployer(@Valid RegisterDTO registerDTO){
+        User user = new User();
+
+        user.setUniqueId(UUID.randomUUID());
+        user.setType("EMPLOYER");
+        user.setEmail(registerDTO.getEmail());
+        user.setPasswordHash(passwordEncoder.encode(registerDTO.getPassword()));
+        user.setFirstName(registerDTO.getFirstName());
+        user.setLastName(registerDTO.getLastName());
+
+        userRepository.save(user);
+
+    }
+
+
+
+
 
 
 

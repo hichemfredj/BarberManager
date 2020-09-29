@@ -60,7 +60,6 @@ export class SignupComponent implements OnInit {
                 
           if(error.error.errors[0].defaultMessage){
             this.emailAlreadyExist = true;
-            console.log(this.emailAlreadyExist); 
           }
       });
       console.log(signupForm);

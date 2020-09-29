@@ -56,4 +56,38 @@ public class RegistrationServiceTest {
 
     }
 
+
+    @Test
+    public void registerEmployer_validRequest() {
+
+        // Arrange
+
+        RegistrationService service = new RegistrationService(userRepository, passwordEncoder);
+
+        RegisterDTO registerDTO = new RegisterDTO();
+
+        registerDTO.setEmail("test@test.com");
+        registerDTO.setFirstName("test");
+        registerDTO.setLastName("test");
+        registerDTO.setPassword("123456789");
+
+        // Act & Assert
+
+        Mockito.when(userRepository.save(Mockito.any())).then(inv -> {
+
+            User user = (User) inv.getArgument(0);
+
+            assertNotNull(user.getUniqueId());
+            assertEquals(registerDTO.getEmail(), user.getEmail());
+            assertEquals(registerDTO.getFirstName(), user.getFirstName());
+            assertEquals(registerDTO.getLastName(), user.getLastName());
+            assertEquals("CLIENT", user.getType());
+            assertTrue(passwordEncoder.matches(registerDTO.getPassword(), user.getPasswordHash()));
+
+            return null;
+        });
+
+        service.registerClient(registerDTO);
+    }
+
 }

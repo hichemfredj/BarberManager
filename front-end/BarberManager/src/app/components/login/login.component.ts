@@ -52,14 +52,12 @@ export class LoginComponent implements OnInit {
       this.loginService.login(loginForm).subscribe((data:JwtResponse) =>{
         if(data && data.token && data.userUniqueId){
           localStorage.setItem('token',data.token);
-          localStorage.setItem('token',data.userUniqueId);
+          localStorage.setItem('UserUniqueId',data.userUniqueId);
           this.authenticated = true;
         }
       },error=>{
   
-          console.log(error.message);
           this.authenticated = false;
-          console.log(this.authenticated);
       });
 
       console.log(loginForm);
