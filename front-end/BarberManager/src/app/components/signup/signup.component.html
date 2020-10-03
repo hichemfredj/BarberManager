@@ -1,80 +1,94 @@
 <div class="container pt-5">
 
-    <div class="card col-12 col-md-8 col-lg-8 mx-auto">
+    <div class="card col-12 col-md-8 col-lg-8 mx-auto" class="mb-5">
         <div class="card-header bg-white">
             <h1 class="text-center">Sign Up</h1>
-        </div>
-        <div class="card-header bg-white" class="text-center" >
-            <button type="button" class="btn btn-light" class="text-left" (click)="isStudentClicked()">
-                Student
-            </button>
-            <button type="button" class="btn btn-light" class="text-right" (click)="isEmployerClicked()">
-                Employer
-            </button>
+            <h1 class="text-center">As</h1>
         </div>
     </div>
 
- 
+    <div class="card-header bg-white" class="text-center">
+        <button mat-flat-button [color]="this.colorStudent" class="mesBouttons" (click)="isStudentClicked()">
+            Student
+        </button>
+        <button mat-flat-button [color]="this.colorEmployer" class="mesBouttons" (click)="isEmployerClicked()">
+            Employer
+        </button>
+    </div>
 
-    <div class="card-body">
+ 
+    <div class="card-body" *ngIf="isStudent || isEmployer">
         <form [formGroup]="signupForm" (ngSubmit)="onSubmitForm()">
 
-           <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input type="text" class="form-control" id="exampleInputFirstName1" formControlName="firstName">
-                <p *ngIf="getF().firstName.hasError('required') && isSubmitted" class="text-danger">
+            <mat-form-field class="form-field" appearance="outline">
+
+                <mat-label> 
+                    First Name
+                </mat-label>
+                <input matInput formControlName="firstName" required>
+                <mat-error *ngIf="getF().firstName.hasError('required') && isSubmitted">
                     First Name is Mandatory !
-                </p>
-                
-            </div>
+                </mat-error>
+            </mat-form-field>
 
-             <div class="form-group">
-                <label for="exampleInputEmail1">Last Name</label>
-                <input type="text" class="form-control" id="exampleInputLastName1" formControlName="lastName">
-                <p *ngIf="getF().lastName.hasError('required') && isSubmitted" class="text-danger">
+
+            <mat-form-field class="form-field" appearance="outline">
+
+                <mat-label> 
+                    Last Name
+                </mat-label>
+                <input matInput formControlName="lastName" required>
+                <mat-error *ngIf="getF().lastName.hasError('required') && isSubmitted" >
                     Last Name is Mandatory !
-                </p>
-            </div>
+                </mat-error>
+            </mat-form-field>
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                <p *ngIf="emailAlreadyExist" class="text-danger">
-                    Email Already registred !
-                </p>
-                <p *ngIf="getF().email.hasError('required') && isSubmitted" class="text-danger">
-                    Email is Mandatory !
-                </p>
-                <p *ngIf="getF().email.invalid && isSubmitted" class="text-danger" >
-                    Email is invalid !
-                </p>
-                
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
-                <div *ngIf="getF().password.hasError && isSubmitted" class="text-danger">
-                    <div *ngIf="getF().password.hasError('required')">
+            <mat-form-field class="form-field" appearance="outline">
+
+                <mat-label> 
+                    Email Address
+                </mat-label>
+                <input matInput formControlName="email" required>
+                  
+                    <mat-error *ngIf="getF().email.invalid && isSubmitted">
+                        Email is invalid !
+                    </mat-error>
+
+            </mat-form-field>
+            <mat-error *ngIf="emailAlreadyExist" >
+                Email Already registred !
+            </mat-error>
+
+       
+
+
+            <mat-form-field class="form-field" appearance="outline">
+
+                <mat-label> 
+                    Password
+                </mat-label>
+                <input matInput formControlName="password" type="password" required>
+                <mat-error *ngIf="getF().password.hasError && isSubmitted" class="text-danger">
+                    <mat-error *ngIf="getF().password.hasError('required')">
                             Password is manadatory
-                    </div>
-                    <div *ngIf="getF().password.hasError('minlength') || getF().password.hasError('maxlength')">
+                    </mat-error>
+                    <mat-error *ngIf="getF().password.hasError('minlength') || getF().password.hasError('maxlength')">
                         Password must be between 6 and 18 characters.
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputConfirmPassword1" formControlName="confirmPass">
-                <div *ngIf="getF().confirmPass.hasError('mustMatch') && isSubmitted" class="alert alert-danger">
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> 
+                    Confirm Password
+                </mat-label>
+                <input matInput formControlName="confirmPass" type="password" required>
+                <mat-error *ngIf="getF().confirmPass.hasError('mustMatch') && isSubmitted" >
                     Password and Confirm Password must be match !
-                </div>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
         </form>
 
     </div>

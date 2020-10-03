@@ -55,15 +55,20 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('UserUniqueId',data.userUniqueId);
           localStorage.setItem('UserType', data.userType);
           this.authenticated = true;
+          this.router.navigate(['/dashbord']);
         }
       },error=>{
   
           this.authenticated = false;
       });
-      this.router.navigate(['/dashbord']);
+      
       console.log(loginForm);
       
     }
+  }
+
+  isAuth(){
+    return this.authenticated;
   }
 
 }

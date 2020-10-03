@@ -6,27 +6,24 @@
         </div>
 
         <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
-                </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    <p *ngIf="!authenticated" class="text-danger">
-                        Email or password is invalid !
-                    </p>
-                </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
-            </form>
-
+            <form [formGroup]="loginForm" (submit)="onSubmitForm()">
+                <mat-form-field class="form-field" appearance="outline">
+                  <mat-label> E-mail
+                  </mat-label>
+                  <input matInput formControlName="email" required>
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                  <mat-label> Password
+                  </mat-label>
+                  <input matInput formControlName="password" type="password">
+                </mat-form-field>
+                <p *ngIf="!authenticated" class="text-danger">
+                    Email or password is invalid !
+                </p>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Log In</button>
+              </form>
         </div>
     </div>
 
 </div>
+

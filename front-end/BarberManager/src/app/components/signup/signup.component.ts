@@ -13,10 +13,12 @@ import { MustMatch } from '../utility/must-match-validator';
 export class SignupComponent implements OnInit {
 
   signupForm : FormGroup;
-  emailAlreadyExist = false;
+  emailAlreadyExist;
   isSubmitted = false;
   isStudent = false;
   isEmployer = false;
+  colorStudent = "";
+  colorEmployer = "";
 
 
   constructor(private formBuilder : FormBuilder, private route : Router, private registerService : RegisterService) { }
@@ -59,25 +61,26 @@ export class SignupComponent implements OnInit {
 
       if(this.isStudent){
         this.registerService.register(signupForm).subscribe(()=>{
-        
+          this.route.navigate(['/login']);
         },error=>{
-                  
+            console.log(error.error.errors[0].defaultMessage);
             if(error.error.errors[0].defaultMessage){
               this.emailAlreadyExist = true;
+              console.log(this.emailAlreadyExist);
             }
         });
         
-      }else{
+      }
+      if(this.isEmployer){
         this.registerService.registerEmployer(signupForm).subscribe(()=>{
         
         },error=>{
-                  
+            
             if(error.error.errors[0].defaultMessage){
               this.emailAlreadyExist = true;
             }
         });
       }
-      this.route.navigate(['/login']);
       console.log(signupForm);
     }
   }
@@ -87,15 +90,19 @@ export class SignupComponent implements OnInit {
   }
 
   isEmployerClicked(){
-
+    
     this.isStudent = false;
     this.isEmployer = true;
+    this.colorStudent = "";
+    this.colorEmployer = "primary";
     console.log("employer : "+this.isEmployer + "," + "student : "+this.isStudent+";")
   }
 
   isStudentClicked(){
     this.isEmployer = false;
     this.isStudent = true;
+    this.colorStudent = "primary";
+    this.colorEmployer = "";
     console.log("employer : "+this.isEmployer + "," + "student : "+this.isStudent+";")
   }
 
