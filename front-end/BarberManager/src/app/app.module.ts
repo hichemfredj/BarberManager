@@ -18,6 +18,11 @@ import { MatListModule} from  '@angular/material/list';
 import { MatButtonModule } from  '@angular/material/button';
 import { MatFormFieldModule } from  '@angular/material/form-field';
 import { MatInputModule } from  '@angular/material/input';
+import { MatTableModule, } from  '@angular/material/table';
+import { AvailabilityComponent } from './components/availability/availability.component';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -25,7 +30,8 @@ import { MatInputModule } from  '@angular/material/input';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashbordComponent
+    DashbordComponent,
+    AvailabilityComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,10 @@ import { MatInputModule } from  '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
@@ -51,7 +61,7 @@ import { MatInputModule } from  '@angular/material/input';
     }),
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
+  bootstrap: [AppComponent,AvailabilityComponent]
 })
 export class AppModule { }

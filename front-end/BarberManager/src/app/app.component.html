@@ -1,17 +1,77 @@
 
 
 
+<!-- <mat-sidenav-container (sidenavToggle)="sidenav.toggle()">
+  <mat-sidenav #sidenav role="navigation">
 
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Home</span>
-  <span class="example-spacer"></span>
-  <span class="nav-tool-items">
-    <a mat-button mat-raised-button routerLink="login" routerLinkActive="active" class="mesBoutons">Log in</a>
-    <a mat-button mat-raised-button routerLink="signup" routerLinkActive="active" class="mesBoutons">Register</a>
-  </span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    
+      <span>Home</span>
+    
+      <span class="example-spacer"></span>
+    
+      <span class="nav-tool-items" *ngIf="role === ''">
+        <a mat-button mat-raised-button routerLink="login" routerLinkActive="active" class="mesBoutons">Log in</a>
+        <a mat-button mat-raised-button routerLink="signup" routerLinkActive="active" class="mesBoutons">Register</a>
+      </span>
+    
+      <span class="nav-tool-items" *ngIf="role != ''">
+        <a mat-button mat-raised-button routerLink="login" routerLinkActive="active" class="mesBoutons" (click)="logoutClicked()">Log out</a>
+      </span>
+    
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <h1 class="example-app-name">UpCuts</h1>
+  
+    <span class="example-spacer"></span>
+  
+    <span class="nav-tool-items" *ngIf="role === ''">
+      <a mat-button mat-raised-button routerLink="login" routerLinkActive="active" class="mesBoutons">Log in</a>
+      <a mat-button mat-raised-button routerLink="signup" routerLinkActive="active" class="mesBoutons">Register</a>
+    </span>
+  
+    <span class="nav-tool-items" *ngIf="role != ''">
+      <a mat-button mat-raised-button routerLink="/login" routerLinkActive="active" class="mesBoutons" (click)="logoutClicked()">Log out</a>
+    </span>
+  
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="dashbord" (click)="onSidenavClose()">
+          <mat-icon>dashboard</mat-icon><span class="nav-caption">Dashbord</span>
+        </a>
+
+        <a mat-list-item routerLink="availability">
+          <mat-icon>calendar_today</mat-icon><span class="nav-caption">My Avaibaility</span>
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
 

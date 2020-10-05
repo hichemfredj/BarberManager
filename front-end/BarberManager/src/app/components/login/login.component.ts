@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginForm } from 'src/app/models/login-form';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { JwtResponse } from 'src/app/models/jwt-response'
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
 
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService, private appComp : AppComponent) { }
 
   authenticated = true;
 
@@ -55,11 +56,14 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('UserUniqueId',data.userUniqueId);
           localStorage.setItem('UserType', data.userType);
           this.authenticated = true;
+          this.loginService.isAuth = true;
           this.router.navigate(['/dashbord']);
+          this.appComp.setRole(localStorage.getItem('UserType'))
         }
       },error=>{
   
           this.authenticated = false;
+          this.loginService.isAuth = false;
       });
       
       console.log(loginForm);
