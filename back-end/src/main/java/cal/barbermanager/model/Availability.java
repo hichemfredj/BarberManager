@@ -14,11 +14,13 @@ public class Availability {
     @Id
     private UUID uniqueId;
 
-    private Date startDate;
-    private Date endDate;
+    private UUID employer;
 
+    private String day;
     private String startTime;
     private String endTime;
+
+    private boolean isAvailable;
 
 
 }
