@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -39,7 +40,7 @@ public class AvailabalityService {
     // Services
     //
 
-    public void createAvailability(@Valid AvailabilityCreation availabilityCreation){
+    public void createAvailability(@Valid List<AvailabilityCreation> availabilityCreation){
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -47,14 +48,19 @@ public class AvailabalityService {
 
         Availability availability = new Availability();
 
-        availability.setUniqueId(UUID.randomUUID());
-        availability.setEmployer(user);
-        availability.setDay(availabilityCreation.getDay());
-        availability.setStartTime(availabilityCreation.getStartTime());
-        availability.setEndTime(availabilityCreation.getEndTime());
-        availability.setAvailable(availabilityCreation.isAvailable());
+        for(AvailabilityCreation a : availabilityCreation){
+
+            availability.setUniqueId(UUID.randomUUID());
+            availability.setEmployer(user);
+            availability.setDay(a.getDay());
+            availability.setStartTime(a.getStartTime());
+            availability.setEndTime(a.getEndTime());
+            availability.setAvailable(a.isAvailable());
+
+            availabilityRepository.save(availability);
+
+        }
 
 
-        availabilityRepository.save(availability);
     }
 }

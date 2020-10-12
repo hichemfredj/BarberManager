@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/availability")
@@ -36,7 +37,7 @@ public class AvailabilityController {
 
     @PreAuthorize("hasAuthority('EMPLOYER')")
     @PostMapping("create")
-    public void createAvailability(@Valid @RequestBody AvailabilityCreation availabilityCreation){
+    public void createAvailability(@Valid @RequestBody List<AvailabilityCreation> availabilityCreation){
         availabalityService.createAvailability(availabilityCreation);
     }
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormArray, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AvailabilityForm } from 'src/app/models/availability-form';
+import { JwtResponse } from 'src/app/models/jwt-response';
+import { AvailabilityService } from 'src/app/services/availability.service';
 
 
 
@@ -19,7 +22,7 @@ export class AvailabilityComponent implements OnInit {
   availabilityFormGroup : FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private route : Router, private availabilityService : AvailabilityService) { }
 
 
   
@@ -47,10 +50,38 @@ export class AvailabilityComponent implements OnInit {
   initItemRow(day : string){
     return this.formBuilder.group({
       day:[day],
-      startTime:[''],
-      endTime:[''],
-      isAvailable:[false]
+      startTime:['',[Validators.required]],
+      endTime:['',[Validators.required]],
+      isAvailable:['false',[Validators.required]]
     });
+  }
+
+  submit(){
+    console.log(this.getFormArr().value);
+    this.onSubmitForm();
+  }
+
+  onSubmitForm(){
+
+    console.log("allllloooooo");
+
+    // if(this.availabilityForm.valid){
+
+     // console.log(this.getFormArr().at(0).value);
+
+      const availabilityForm : Array<AvailabilityForm> =[];
+
+      for(var i = 0 ; i < this.getFormArr().length; i++ ){
+        availabilityForm.push(this.getFormArr().at(i).value);
+
+        //console.log(availabilityForm[i]);
+      }
+
+    this.availabilityService.createAvailability(availabilityForm).subscribe(()=>{
+    },error=>{
+      console.log(error);
+    })
+    
   }
 
   

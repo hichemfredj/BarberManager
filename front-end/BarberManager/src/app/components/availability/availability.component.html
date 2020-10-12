@@ -10,14 +10,13 @@
         </div>
 
         
-        <ng-container [formGroup]="availabilityFormGroup">
+        <ng-container [formGroup]="availabilityFormGroup" >
 
             <ng-container *ngIf="this.getFormArr()"  formArrayName="availabilityForm">
     
                 <div class="m-0 d-flex justify-content-around" *ngFor="let availabilitie of getFormArr().controls let i = index" >
-                  <ng-container [formGroup]="availabilitie">
+                  <ng-container [formGroup]="availabilitie" (ngSubmit)="onSubmitForm()">
                     <div class="d-flex justify-content-between">
-
                         <mat-form-field appearance="outline" class="w-75">
                           <mat-label>{{availabilitie.day}}</mat-label>
                           <input matInput autocomplete="off" formControlName="day" readonly>
@@ -34,12 +33,11 @@
                         <div>
                             <input type="checkbox" formControlName="isAvailable" >
                         </div>
-                        
                     </div>
-                    
-                    // submitForm
-        
                   </ng-container>
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" (click)="submit()" type="submit">Submit</button>
                 </div>
             </ng-container>
         </ng-container>

@@ -19,6 +19,5 @@ public class AvailabilityCreation implements Serializable {
     @NotBlank(message = "End Hour is mandatory")
     private String endTime;
 
-    @NotBlank(message = "Status of availability is mandatory")
     private boolean isAvailable;
 }

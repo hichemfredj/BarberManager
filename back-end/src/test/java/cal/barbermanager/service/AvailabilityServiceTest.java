@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,12 +50,17 @@ public class AvailabilityServiceTest {
 
         AvailabalityService availabalityService = new AvailabalityService(availabilityRepository, null);
 
-        AvailabilityCreation availabilityCreation = new AvailabilityCreation();
+        AvailabilityCreation a = new AvailabilityCreation();
+        List<AvailabilityCreation> availabilityCreation = new ArrayList<AvailabilityCreation>();
 
-        availabilityCreation.setDay("Monday");
-        availabilityCreation.setStartTime("10:00");
-        availabilityCreation.setEndTime("20:00");
-        availabilityCreation.setAvailable(true);
+        a.setDay("Monday");
+        a.setStartTime("10:00");
+        a.setEndTime("20:00");
+        a.setAvailable(true);
+
+        availabilityCreation.add(0,a);
+
+
 
 
         // Act & assert
@@ -65,9 +72,9 @@ public class AvailabilityServiceTest {
             assertNotNull(availability.getUniqueId());
             assertEquals(user.getUniqueId(), availability.getEmployer());
             assertEquals(true,availability.isAvailable());
-            assertEquals(availabilityCreation.getDay(),availability.getDay());
-            assertEquals(availabilityCreation.getStartTime(),availability.getStartTime());
-            assertEquals(availabilityCreation.getEndTime(),availability.getEndTime());
+            assertEquals(availabilityCreation.get(0).getDay(),availability.getDay());
+            assertEquals(availabilityCreation.get(0).getStartTime(),availability.getStartTime());
+            assertEquals(availabilityCreation.get(0).getEndTime(),availability.getEndTime());
 
             System.out.println(user.getUniqueId());
             System.out.println(availability.getEmployer());
