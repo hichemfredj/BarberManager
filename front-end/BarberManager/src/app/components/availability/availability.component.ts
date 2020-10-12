@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AvailabilityForm } from 'src/app/models/availability-form';
+
 
 
 @Component({
@@ -10,33 +12,48 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class AvailabilityComponent implements OnInit {
 
-  constructor(private _fb: FormBuilder) { }
+  days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
-  public addmore: FormGroup;
+  availabilityForm : FormArray;
 
+  availabilityFormGroup : FormGroup;
+
+
+  constructor(private formBuilder: FormBuilder) { }
+
+
+  
+  
   ngOnInit() {
-    this.addmore = this._fb.group({
-      dayName:[''],
-  	  startdate:[''],
-  	  endDate:[''],
-      itemRows: this._fb.array([this.initItemRows()])
-    });
-  }
-  get formArr() {
-    return this.addmore.get('itemRows') as FormArray;
+    this.initForm();
+    console.log(this.getFormArr());
+
   }
 
-  initItemRows() {
-    return this._fb.group({
-    timeRange:['']
+  initForm(){
+    this.availabilityFormGroup = this.formBuilder.group({
+      availabilityForm : new FormArray([])
+    })
+    this.days.forEach((day) =>{
+      this.getFormArr().push(this.initItemRow(day));
     });
-  }
-  addNewRow() {
-    this.formArr.push(this.initItemRows());
+    
   }
 
-  deleteRow(index: number) {
-    this.formArr.removeAt(index);
+  getFormArr(){
+    return this.availabilityFormGroup.get('availabilityForm') as FormArray;
   }
+
+  initItemRow(day : string){
+    return this.formBuilder.group({
+      day:[day],
+      startTime:[''],
+      endTime:[''],
+      isAvailable:[false]
+    });
+  }
+
+  
+ 
 
 }

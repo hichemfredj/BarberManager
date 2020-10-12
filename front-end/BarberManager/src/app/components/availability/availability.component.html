@@ -1,1 +1,64 @@
-<h1>Mes Disponibilite</h1>
+    <div class="container">
+
+        <h2 class="text-center border-bottom border-dark w-50 mx-auto">Mes Disponibilitées</h2>
+
+        <div class="m-0 d-flex justify-content-between">
+                <p>Week Day</p>
+                <p>Start Time</p>
+                <p>End Time</p>
+                <p>Cancel</p>
+        </div>
+
+        
+        <ng-container [formGroup]="availabilityFormGroup">
+
+            <ng-container *ngIf="this.getFormArr()"  formArrayName="availabilityForm">
+    
+                <div class="m-0 d-flex justify-content-around" *ngFor="let availabilitie of getFormArr().controls let i = index" >
+                  <ng-container [formGroup]="availabilitie">
+                    <div class="d-flex justify-content-between">
+
+                        <mat-form-field appearance="outline" class="w-75">
+                          <mat-label>{{availabilitie.day}}</mat-label>
+                          <input matInput autocomplete="off" formControlName="day" readonly>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-75">
+                            <input matInput autocomplete="off" formControlName="startTime" placeholder="00:00">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-75">
+                            <input matInput autocomplete="off" formControlName="endTime" placeholder="00:00">
+                        </mat-form-field>
+                        
+                        <div>
+                            <input type="checkbox" formControlName="isAvailable" >
+                        </div>
+                        
+                    </div>
+                    
+                    // submitForm
+        
+                  </ng-container>
+                </div>
+            </ng-container>
+        </ng-container>
+
+    </div>
+    <!-- <ng-container formArrayName="instructions">
+
+        <p class="m-0" *ngFor="let instruction of getInstructions().controls let i = index">
+          <ng-container [formGroup]="instruction">
+
+            <mat-form-field appearance="outline" class="w-75">
+              <mat-label>instruction. {{i + 1}}</mat-label>
+              <input matInput autocomplete="off" formControlName="instructionInput">
+              <mat-icon (click)="onRemoveInstruction(i)" matSuffix>clear
+              </mat-icon>
+              <mat-error>instruction cannot be blank</mat-error>
+            </mat-form-field>
+          </ng-container>
+        </p>
+      </ng-container> -->
+
+

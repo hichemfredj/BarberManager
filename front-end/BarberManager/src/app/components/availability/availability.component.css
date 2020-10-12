@@ -1,4 +1,3 @@
-.required-field::before {
-    content: "*";
-    color: red;
-  }
+table {
+  width: 100%;
+}
