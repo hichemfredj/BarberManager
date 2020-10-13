@@ -11,18 +11,18 @@ export class AvailabilityService {
 
   constructor(private http: HttpClient) { }
 
-  headers(){
-    let token = localStorage.getItem("token");
+  // headers(){
+  //   let token = localStorage.getItem("token");
 
-    return {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        }
-    }
-  }
+  //   return {
+  //       headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': token
+  //       }
+  //   }
+  // }
 
   createAvailability(availability: Array<AvailabilityForm>){
-    return this.http.post(environment.availabilityUrl, availability, this.headers());
+    return this.http.post(environment.availabilityUrl, availability);
   }
 }

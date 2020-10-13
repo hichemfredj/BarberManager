@@ -55,8 +55,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
         tokenGetter: () => {
           return localStorage.getItem("token");
         },
-        allowedDomains: [environment.globalUrl],
-        disallowedRoutes: [environment.loginUrl,environment.signupUrl],
+        allowedDomains: ['localhost:9090'],
+        disallowedRoutes: ['localhost:9090/authenticate','localhost:9090/registration/client'],
       },
     }),
     BrowserAnimationsModule
