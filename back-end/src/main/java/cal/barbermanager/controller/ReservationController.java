@@ -41,7 +41,7 @@ public class ReservationController {
 
     @PreAuthorize("hasAuthority('CLIENT')")
     @PostMapping("create-reservation")
-    public void createReservation(@Valid @RequestBody List<ReservationDTO> reservationDTO){
+    public void createReservation(@Valid @RequestBody ReservationDTO reservationDTO){
 
         reservationService.createReservation(reservationDTO);
 

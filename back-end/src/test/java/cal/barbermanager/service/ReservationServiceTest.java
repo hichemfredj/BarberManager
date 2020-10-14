@@ -53,7 +53,7 @@ public class ReservationServiceTest {
         ReservationService reservationService = new ReservationService(reservationRepository);
 
         ReservationDTO r = new ReservationDTO();
-        List<ReservationDTO> reservationDTO = new ArrayList<ReservationDTO>();
+//        List<ReservationDTO> reservationDTO = new ArrayList<ReservationDTO>();
 
         r.setEmployer(UUID.randomUUID());
         r.setClientName("Hichem");
@@ -63,7 +63,7 @@ public class ReservationServiceTest {
 
 
 
-        reservationDTO.add(0,r);
+//        reservationDTO.add(0,r);
 
 
 
@@ -76,11 +76,11 @@ public class ReservationServiceTest {
 
             assertNotNull(reservation.getUniqueId());
             assertEquals(user.getUniqueId(), reservation.getClient());
-            assertEquals(reservationDTO.get(0).getEmployer(),reservation.getEmployer());
-            assertEquals(reservationDTO.get(0).getClientName(),reservation.getClientName());
-            assertEquals(reservationDTO.get(0).getBarberName(),reservation.getBarberName());
-            assertEquals(reservationDTO.get(0).getTime(),reservation.getTime());
-            assertEquals(reservationDTO.get(0).getDate(),reservation.getDate());
+            assertEquals(r.getEmployer(),reservation.getEmployer());
+            assertEquals(r.getClientName(),reservation.getClientName());
+            assertEquals(r.getBarberName(),reservation.getBarberName());
+            assertEquals(r.getTime(),reservation.getTime());
+            assertEquals(r.getDate(),reservation.getDate());
 
 
             System.out.println(reservation);
@@ -89,6 +89,6 @@ public class ReservationServiceTest {
 
         });
 
-        reservationService.createReservation(reservationDTO);
+        reservationService.createReservation(r);
     }
 }

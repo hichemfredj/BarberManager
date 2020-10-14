@@ -35,7 +35,7 @@ public class ReservationService {
     //Services
     //
 
-    public void createReservation(@Valid List<ReservationDTO> reservationDTO){
+    public void createReservation(@Valid ReservationDTO reservationDTO){
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -43,19 +43,15 @@ public class ReservationService {
 
         Reservation reservation = new Reservation();
 
-        for(ReservationDTO r : reservationDTO){
             reservation.setUniqueId(UUID.randomUUID());
             reservation.setClient(user);
-            reservation.setEmployer(r.getEmployer());
-            reservation.setDate(r.getDate());
-            reservation.setTime(r.getTime());
-            reservation.setClientName(r.getClientName());
-            reservation.setBarberName(r.getBarberName());
+            reservation.setEmployer(reservationDTO.getEmployer());
+            reservation.setDate(reservationDTO.getDate());
+            reservation.setTime(reservationDTO.getTime());
+            reservation.setClientName(reservationDTO.getClientName());
+            reservation.setBarberName(reservationDTO.getBarberName());
 
             reservationRepository.save(reservation);
-        }
-
-
 
     }
 }
