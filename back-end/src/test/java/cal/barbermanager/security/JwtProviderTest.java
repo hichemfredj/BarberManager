@@ -25,7 +25,7 @@ public class JwtProviderTest {
         User user = new User();
 
         user.setUniqueId(UUID.randomUUID());
-        user.setType("STUDENT");
+        user.setType("CLIENT");
 
         // ACT
 
@@ -46,7 +46,7 @@ public class JwtProviderTest {
         User user = new User();
 
         user.setUniqueId(UUID.randomUUID());
-        user.setType("STUDENT");
+        user.setType("CLIENT");
 
         // Act
 
@@ -68,7 +68,7 @@ public class JwtProviderTest {
         User user = new User();
 
         user.setUniqueId(UUID.randomUUID());
-        user.setType("CLIENT");
+        user.setType("STUDENT");
 
         // Act & Assert
 

@@ -30,8 +30,6 @@ public class AvailabilityServiceTest {
     @Mock
     private AvailabilityRepository availabilityRepository;
 
-    @Mock
-    private UserRepository userRepository;
 
     @Test
     public void createAvailability_validRequest(){
@@ -48,7 +46,7 @@ public class AvailabilityServiceTest {
         JwtAuthentication authentication = new JwtAuthentication(decodedToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        AvailabalityService availabalityService = new AvailabalityService(availabilityRepository, null);
+        AvailabalityService availabalityService = new AvailabalityService(availabilityRepository);
 
         AvailabilityCreation a = new AvailabilityCreation();
         List<AvailabilityCreation> availabilityCreation = new ArrayList<AvailabilityCreation>();

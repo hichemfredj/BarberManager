@@ -24,16 +24,14 @@ public class AvailabalityService {
 
     private final AvailabilityRepository availabilityRepository;
 
-    private final UserRepository userRepository;
 
     //
     // Constructors
     //
 
     @Autowired
-    public AvailabalityService(AvailabilityRepository availabilityRepository, UserRepository userRepository){
+    public AvailabalityService(AvailabilityRepository availabilityRepository){
         this.availabilityRepository = availabilityRepository;
-        this.userRepository = userRepository;
     }
 
     //
