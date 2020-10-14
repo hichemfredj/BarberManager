@@ -19,9 +19,11 @@ import { MatButtonModule } from  '@angular/material/button';
 import { MatFormFieldModule } from  '@angular/material/form-field';
 import { MatInputModule } from  '@angular/material/input';
 import { MatTableModule, } from  '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 import { AvailabilityComponent } from './components/availability/availability.component';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { ListEmployeeComponent } from './components/list-employee/list-employee.component';
 
 
 
@@ -31,7 +33,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     LoginComponent,
     SignupComponent,
     DashbordComponent,
-    AvailabilityComponent
+    AvailabilityComponent,
+    ListEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     MatTableModule,
     MatNativeDateModule,
     MatOptionModule,
+    MatCardModule,
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
