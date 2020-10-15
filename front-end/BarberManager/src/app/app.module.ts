@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,11 +20,15 @@ import { MatFormFieldModule } from  '@angular/material/form-field';
 import { MatInputModule } from  '@angular/material/input';
 import { MatTableModule, } from  '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker'
 import { AvailabilityComponent } from './components/availability/availability.component';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { ListEmployeeComponent } from './components/list-employee/list-employee.component';
-
+import { ReservationComponent } from './components/reservation/reservation.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -34,7 +38,8 @@ import { ListEmployeeComponent } from './components/list-employee/list-employee.
     SignupComponent,
     DashbordComponent,
     AvailabilityComponent,
-    ListEmployeeComponent
+    ListEmployeeComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,10 @@ import { ListEmployeeComponent } from './components/list-employee/list-employee.
     MatNativeDateModule,
     MatOptionModule,
     MatCardModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
@@ -65,7 +74,10 @@ import { ListEmployeeComponent } from './components/list-employee/list-employee.
     }),
     BrowserAnimationsModule
   ],
-  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    {provide : LOCALE_ID, useValue: 'en-GB' }
+  ],
   bootstrap: [AppComponent,AvailabilityComponent]
 })
 export class AppModule { }

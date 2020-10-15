@@ -1,0 +1,30 @@
+<h2>Prise de rendez-vous</h2>
+<mat-dialog-content class="mat-typography">
+
+    <h3>Choisis une date</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+      
+    <pre>{{date}}</pre>
+    <h3>Choisis une heure pour ton rendez-vous</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Select time</mat-label>
+      <mat-select [(value)]="timeSelected" [(ngModel)]="timeSelected">
+        <div class="div" *ngFor="let time of time let i = index">
+
+          <mat-option value="{{time}}">{{time}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+    <p>Please Confirm Before Submiting your apointement</p>
+    <button mat-raised-button (click)="onConfirm()">Confirm</button>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onSubmitForm()">Reserve</button> 
+</mat-dialog-actions>

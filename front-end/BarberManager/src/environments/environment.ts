@@ -13,7 +13,8 @@ export const environment = {
   signupUrl :`${link}/registration/client`,
   signupEmployerUrl: `${link}/registration/employer`,
   availabilityUrl: `${link}/availability/create`,
-  listEmployeeUrl:`${link}/user/list-employer`
+  listEmployeeUrl:`${link}/user/list-employer`,
+  createReservationUrl:`${link}/reservation/create-reservation`
 
 };
 
