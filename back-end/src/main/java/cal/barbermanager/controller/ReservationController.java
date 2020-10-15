@@ -8,11 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/reservation")
 public class ReservationController {
 
@@ -39,8 +40,7 @@ public class ReservationController {
     // Post
     //
 
-    @PreAuthorize("hasAuthority('CLIENT')")
-    @PostMapping("create-reservation")
+    @PostMapping("/create-reservation")
     public void createReservation(@Valid @RequestBody ReservationDTO reservationDTO){
 
         reservationService.createReservation(reservationDTO);

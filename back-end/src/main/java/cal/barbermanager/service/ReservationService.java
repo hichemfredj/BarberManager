@@ -44,11 +44,11 @@ public class ReservationService {
         Reservation reservation = new Reservation();
 
             reservation.setUniqueId(UUID.randomUUID());
-            reservation.setClient(user);
-            reservation.setEmployer(reservationDTO.getEmployer());
+//            reservation.setClient(user);
+//            reservation.setEmployer(reservationDTO.getEmployer());
             reservation.setDate(reservationDTO.getDate());
             reservation.setTime(reservationDTO.getTime());
-            reservation.setClientName(reservationDTO.getClientName());
+//            reservation.setClientName(reservationDTO.getClientName());
             reservation.setBarberName(reservationDTO.getBarberName());
 
             reservationRepository.save(reservation);

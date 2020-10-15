@@ -14,10 +14,6 @@ public class Reservation {
     @Id
     private UUID uniqueId;
 
-    private UUID employer;
-
-    private UUID client;
-
     private String date;
 
     private String time;
