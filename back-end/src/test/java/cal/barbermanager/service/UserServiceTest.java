@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,6 +43,28 @@ public class UserServiceTest {
         assertEquals(List.of(user), userService.getListEmployer());
 
 
+    }
+
+    @Test
+    public void userById_validRequest(){
+
+
+        // Arrange
+
+        User user = new User();
+
+        user.setUniqueId(UUID.randomUUID());
+        user.setFirstName("hichem");
+        user.setLastName("fredj");
+        user.setType("CLIENT");
+
+        UserService userService = new UserService(userRepository);
+
+        //ACT & ASSERT
+
+        Mockito.when(userRepository.findByUniqueId(Mockito.any())).thenReturn(user);
+
+        assertEquals(userService.getUserById(user.getUniqueId()), user );
 
     }
 
