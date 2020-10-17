@@ -72,4 +72,25 @@ public class ReservationService {
 
         return listReservationDTO;
     }
+
+    public List<ReservationDTO> getListReservationByBarberName(String barberName){
+
+        List<Reservation> listReservation = reservationRepository.findByBarberName(barberName);
+
+        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+
+        ReservationDTO reservationDTO = new ReservationDTO();
+
+        for(Reservation reservation : listReservation){
+            reservationDTO.setBarberName(reservation.getBarberName());
+            reservationDTO.setClientName(reservation.getClientName());
+            reservationDTO.setTime(reservation.getTime());
+            reservationDTO.setDate(reservation.getDate());
+
+            listReservationDTO.add(reservationDTO);
+        }
+
+        return listReservationDTO;
+
+    }
 }

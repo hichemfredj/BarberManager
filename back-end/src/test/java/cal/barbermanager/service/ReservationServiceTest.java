@@ -112,4 +112,33 @@ public class ReservationServiceTest {
 
 
     }
+
+    @Test
+    public void listReservationBarberName_validRequest() {
+
+        //Arrange
+
+        Reservation reservation = new Reservation();
+
+        reservation.setUniqueId(UUID.randomUUID());
+        reservation.setBarberName("Carlos");
+        reservation.setClientName("Hichem");
+        reservation.setDate("15/10/2020");
+        reservation.setTime("12:00");
+
+
+        ReservationService reservationService = new ReservationService(reservationRepository);
+
+
+        // ACT & ASSERT
+
+        Mockito.when(reservationRepository.findByBarberName(Mockito.any())).thenReturn(List.of(reservation));
+
+        // assertEquals(List.of(reservation), reservationService.getListReservation());
+
+        assertNotNull(reservationService.getListReservationByBarberName(reservation.getBarberName()));
+
+
+    }
+
 }
