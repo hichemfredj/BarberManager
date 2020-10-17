@@ -55,6 +55,7 @@ public class ReservationServiceTest {
         ReservationDTO r = new ReservationDTO();
 
         r.setEmployer(UUID.randomUUID());
+        r.setClient(UUID.randomUUID());
         r.setClientName("Hichem");
         r.setBarberName("Carlos");
         r.setDate("28/10/2020");
@@ -93,6 +94,8 @@ public class ReservationServiceTest {
         Reservation reservation = new Reservation();
 
         reservation.setUniqueId(UUID.randomUUID());
+        reservation.setClient(UUID.randomUUID());
+        reservation.setEmployer(UUID.randomUUID());
         reservation.setBarberName("Carlos");
         reservation.setClientName("Hichem");
         reservation.setDate("15/10/2020");
@@ -114,13 +117,15 @@ public class ReservationServiceTest {
     }
 
     @Test
-    public void listReservationBarberName_validRequest() {
+    public void listReservationBarberId_validRequest() {
 
         //Arrange
 
         Reservation reservation = new Reservation();
 
         reservation.setUniqueId(UUID.randomUUID());
+        reservation.setClient(UUID.randomUUID());
+        reservation.setEmployer(UUID.randomUUID());
         reservation.setBarberName("Carlos");
         reservation.setClientName("Hichem");
         reservation.setDate("15/10/2020");
@@ -132,11 +137,39 @@ public class ReservationServiceTest {
 
         // ACT & ASSERT
 
-        Mockito.when(reservationRepository.findByBarberName(Mockito.any())).thenReturn(List.of(reservation));
+        Mockito.when(reservationRepository.findByEmployer(Mockito.any())).thenReturn(List.of(reservation));
 
         // assertEquals(List.of(reservation), reservationService.getListReservation());
 
-        assertNotNull(reservationService.getListReservationByBarberName(reservation.getBarberName()));
+        assertNotNull(reservationService.getListReservationByBarberId(reservation.getEmployer()));
+
+
+    }
+    @Test
+    public void listReservationClientId_validRequest() {
+
+        //Arrange
+
+        Reservation reservation = new Reservation();
+
+        reservation.setUniqueId(UUID.randomUUID());
+        reservation.setClient(UUID.randomUUID());
+        reservation.setEmployer(UUID.randomUUID());
+        reservation.setBarberName("Carlos");
+        reservation.setClientName("Hichem");
+        reservation.setDate("15/10/2020");
+        reservation.setTime("12:00");
+
+
+        ReservationService reservationService = new ReservationService(reservationRepository);
+
+
+        // ACT & ASSERT
+
+        Mockito.when(reservationRepository.findByClient(Mockito.any())).thenReturn(List.of(reservation));
+        
+
+        assertNotNull(reservationService.getListReservationByClientId(reservation.getClient()));
 
 
     }

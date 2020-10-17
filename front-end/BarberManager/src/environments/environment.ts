@@ -16,6 +16,7 @@ export const environment = {
   listEmployeeUrl:`${link}/user/list-employer`,
   createReservationUrl:`${link}/reservation/create-reservation`,
   userById:`${link}/user/users/`,
+  listReservationUrl:`${link}/reservation/list-reservation`
 
 };
 

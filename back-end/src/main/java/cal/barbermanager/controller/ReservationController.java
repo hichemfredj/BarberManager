@@ -52,14 +52,20 @@ public class ReservationController {
 
 
     @GetMapping("list-reservation")
-    public List<ReservationDTO> getListReservation(){
+    public List<Reservation> getListReservation(){
         return reservationService.getListReservation();
     }
 
-    @GetMapping("list-reservation/{barberName}")
-    public List<ReservationDTO> getReservationByBarberName(@PathVariable String barberName){
+    @GetMapping("list-reservation/barber/{barberId}")
+    public List<Reservation> getReservationByBarberId(@PathVariable UUID barberId){
 
-        return reservationService.getListReservationByBarberName(barberName);
+        return reservationService.getListReservationByBarberId(barberId);
+
+    }
+    @GetMapping("list-reservation/client/{clientId}")
+    public List<Reservation> getReservationByClientId(@PathVariable UUID clientId){
+
+        return reservationService.getListReservationByClientId(clientId);
 
     }
 

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AvailabilityComponent } from './components/availability/availability.component';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { ListEmployeeComponent } from './components/list-employee/list-employee.component';
+import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:'signup', component : SignupComponent},
   {path:'dashbord', component: DashbordComponent},
   {path:'availability', component: AvailabilityComponent},
-  {path:'list-employee', component: ListEmployeeComponent}
+  {path:'list-employee', component: ListEmployeeComponent},
+  {path: 'list-reservation', component: ListReservationComponent}
 ];
 
 @NgModule({

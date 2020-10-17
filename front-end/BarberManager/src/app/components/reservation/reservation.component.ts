@@ -48,7 +48,6 @@ export class ReservationComponent implements OnInit {
   public getUser(){
     this.userService.getUserById(localStorage.getItem('UserUniqueId')).subscribe(data=>{
       this.user = data;
-      console.log(this.user);
     });
   }
 

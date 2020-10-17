@@ -53,44 +53,60 @@ public class ReservationService {
 
     }
 
-    public List<ReservationDTO> getListReservation(){
+    public List<Reservation> getListReservation(){
 
         List<Reservation> listReservation = reservationRepository.findAll();
 
-        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+//        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+//
+//        ReservationDTO reservationDTO = new ReservationDTO();
+//
+//        for(Reservation reservation : listReservation){
+//            reservationDTO.setClient(reservation.getClient());
+//            reservationDTO.setEmployer(reservation.getEmployer());
+//            reservationDTO.setBarberName(reservation.getBarberName());
+//            reservationDTO.setClientName(reservation.getClientName());
+//            reservationDTO.setTime(reservation.getTime());
+//            reservationDTO.setDate(reservation.getDate());
+//
+//            listReservationDTO.add(reservationDTO);
+//        }
 
-        ReservationDTO reservationDTO = new ReservationDTO();
-
-        for(Reservation reservation : listReservation){
-            reservationDTO.setBarberName(reservation.getBarberName());
-            reservationDTO.setClientName(reservation.getClientName());
-            reservationDTO.setTime(reservation.getTime());
-            reservationDTO.setDate(reservation.getDate());
-
-            listReservationDTO.add(reservationDTO);
-        }
-
-        return listReservationDTO;
+//        return listReservationDTO;
+        return listReservation;
     }
 
-    public List<ReservationDTO> getListReservationByBarberName(String barberName){
+    public List<Reservation> getListReservationByBarberId(UUID barberId){
 
-        List<Reservation> listReservation = reservationRepository.findByBarberName(barberName);
+        List<Reservation> listReservation = reservationRepository.findByEmployer(barberId);
 
-        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+//        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+//
+//        ReservationDTO reservationDTO = new ReservationDTO();
+//
+//        for(Reservation reservation : listReservation){
+//            reservationDTO.setClient(reservation.getClient());
+//            reservationDTO.setEmployer(reservation.getEmployer());
+//            reservationDTO.setBarberName(reservation.getBarberName());
+//            reservationDTO.setClientName(reservation.getClientName());
+//            reservationDTO.setTime(reservation.getTime());
+//            reservationDTO.setDate(reservation.getDate());
+//
+//            listReservationDTO.add(reservationDTO);
+//        }
+//
+//        return listReservationDTO;
 
-        ReservationDTO reservationDTO = new ReservationDTO();
+        return listReservation;
 
-        for(Reservation reservation : listReservation){
-            reservationDTO.setBarberName(reservation.getBarberName());
-            reservationDTO.setClientName(reservation.getClientName());
-            reservationDTO.setTime(reservation.getTime());
-            reservationDTO.setDate(reservation.getDate());
+    }
 
-            listReservationDTO.add(reservationDTO);
-        }
+    public List<Reservation> getListReservationByClientId(UUID clientId){
 
-        return listReservationDTO;
+        List<Reservation> listReservation = reservationRepository.findByClient(clientId);
+
+
+        return listReservation;
 
     }
 }

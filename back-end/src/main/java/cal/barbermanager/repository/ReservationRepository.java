@@ -10,6 +10,7 @@ import java.util.UUID;
 @Repository
 public interface ReservationRepository extends MongoRepository<Reservation, UUID> {
 
-    List<Reservation> findByBarberName(String barbername);
+    List<Reservation> findByEmployer(UUID barberId);
+    List<Reservation> findByClient(UUID clientId);
 
 }

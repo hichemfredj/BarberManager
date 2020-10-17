@@ -29,6 +29,7 @@ import { ListEmployeeComponent } from './components/list-employee/list-employee.
 import { ReservationComponent } from './components/reservation/reservation.component';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
     DashbordComponent,
     AvailabilityComponent,
     ListEmployeeComponent,
-    ReservationComponent
+    ReservationComponent,
+    ListReservationComponent
   ],
   imports: [
     BrowserModule,
