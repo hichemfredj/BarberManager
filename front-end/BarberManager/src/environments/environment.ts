@@ -14,7 +14,8 @@ export const environment = {
   signupEmployerUrl: `${link}/registration/employer`,
   availabilityUrl: `${link}/availability/create`,
   listEmployeeUrl:`${link}/user/list-employer`,
-  createReservationUrl:`${link}/reservation/create-reservation`
+  createReservationUrl:`${link}/reservation/create-reservation`,
+  userById:`${link}/user/users/`,
 
 };
 

@@ -7,6 +7,9 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import * as moment from 'moment';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReservationForm } from 'src/app/models/reservation-form';
+import { UserService } from 'src/app/services/user.service';
+import { RegisterForm } from 'src/app/models/register-form';
+import { UserDTO } from 'src/app/models/userDTO';
 
 @Component({
   selector: 'app-reservation',
@@ -22,6 +25,7 @@ export class ReservationComponent implements OnInit {
   reservationForm: FormGroup;
   date:string;
   clientId: any;
+  user: UserDTO;
   
   events: string[] = [];
 
@@ -30,7 +34,7 @@ export class ReservationComponent implements OnInit {
   //   console.log(this.events);
   // }
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private route: Router, private reservationService : ReservationService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder, private route: Router, private reservationService : ReservationService, private userService : UserService) { }
   
   public onDate(event): void {
     this.date = event;
@@ -41,13 +45,25 @@ export class ReservationComponent implements OnInit {
     return this.date;
   }
 
+  public getUser(){
+    this.userService.getUserById(localStorage.getItem('UserUniqueId')).subscribe(data=>{
+      this.user = data;
+      console.log(this.user);
+    });
+  }
+
+  
+
+  // forloop dans le tableau de time et eliminer 
+  // tt les times plus petit que le start time et plus grand que le end time
 
   ngOnInit(): void {
 
     this.initForm();
     this.clientId = localStorage.getItem('UserUniqueId');
     console.log(this.data.uniqueId);
-    
+
+    this.getUser();
 
   }
 
@@ -57,9 +73,12 @@ export class ReservationComponent implements OnInit {
 
   onSubmitForm(){
     const reservationForm : ReservationForm = {
+      client: this.clientId,
+      employer : this.data.uniqueId,
       date : this.finalDate,
       time: this.finalTime,
-      barberName: this.data.firstName
+      barberName: this.data.firstName,
+      clientName: this.user.firstName
     }
 
     this.reservationService.createReservation(reservationForm).subscribe(()=>{

@@ -14,13 +14,19 @@ public class Reservation {
     @Id
     private UUID uniqueId;
 
+    private UUID client;
+    private UUID employer;
+
     private String date;
 
     private String time;
 
+    private String barberName;
+
     private String clientName;
 
-    private String barberName;
+
+
 
 
 

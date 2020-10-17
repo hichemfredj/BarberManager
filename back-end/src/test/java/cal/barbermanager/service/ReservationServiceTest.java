@@ -36,7 +36,7 @@ public class ReservationServiceTest {
 
 
     @Test
-    public void createReservation_validRequest(){
+    public void createReservation_validRequest() {
 
         // Arrange
 
@@ -55,17 +55,14 @@ public class ReservationServiceTest {
         ReservationDTO r = new ReservationDTO();
 //        List<ReservationDTO> reservationDTO = new ArrayList<ReservationDTO>();
 
-//        r.setEmployer(UUID.randomUUID());
-//        r.setClientName("Hichem");
+        r.setEmployer(UUID.randomUUID());
+        r.setClientName("Hichem");
         r.setBarberName("Carlos");
         r.setDate("28/10/2020");
         r.setTime("11:00AM");
 
 
-
 //        reservationDTO.add(0,r);
-
-
 
 
         // Act & assert
@@ -75,12 +72,12 @@ public class ReservationServiceTest {
             Reservation reservation = (Reservation) inv.getArgument(0);
 
             assertNotNull(reservation.getUniqueId());
-//            assertEquals(user.getUniqueId(), reservation.getClient());
-//            assertEquals(r.getEmployer(),reservation.getEmployer());
-//            assertEquals(r.getClientName(),reservation.getClientName());
-            assertEquals(r.getBarberName(),reservation.getBarberName());
-            assertEquals(r.getTime(),reservation.getTime());
-            assertEquals(r.getDate(),reservation.getDate());
+            assertEquals(r.getClient(), reservation.getClient());
+            assertEquals(r.getEmployer(),reservation.getEmployer());
+            assertEquals(r.getClientName(),reservation.getClientName());
+            assertEquals(r.getBarberName(), reservation.getBarberName());
+            assertEquals(r.getTime(), reservation.getTime());
+            assertEquals(r.getDate(), reservation.getDate());
 
 
             System.out.println(reservation);
@@ -91,4 +88,30 @@ public class ReservationServiceTest {
 
         reservationService.createReservation(r);
     }
+
+//    @Test
+//    public void listEmployee_validRequest() {
+//
+//        //Arrange
+//
+//        Reservation reservation = new Reservation();
+//
+//        reservation.setUniqueId(UUID.randomUUID());
+//        reservation.setBarberName("Carlos");
+//        reservation.setClientName("Hichem");
+//        reservation.setDate("15/10/2020");
+//        reservation.setTime("12:00");
+//
+//
+//        ReservationService reservationService = new ReservationService(reservationRepository);
+//
+//
+//        // ACT & ASSERT
+//
+//        Mockito.when(reservationRepository.findAll()).thenReturn(List.of(reservation));
+//
+//        assertEquals(List.of(reservation), reservationService.getListEmployer());
+//
+//
+//    }
 }
