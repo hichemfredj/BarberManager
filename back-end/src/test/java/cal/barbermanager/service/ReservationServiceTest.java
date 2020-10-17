@@ -53,16 +53,12 @@ public class ReservationServiceTest {
         ReservationService reservationService = new ReservationService(reservationRepository);
 
         ReservationDTO r = new ReservationDTO();
-//        List<ReservationDTO> reservationDTO = new ArrayList<ReservationDTO>();
 
         r.setEmployer(UUID.randomUUID());
         r.setClientName("Hichem");
         r.setBarberName("Carlos");
         r.setDate("28/10/2020");
         r.setTime("11:00AM");
-
-
-//        reservationDTO.add(0,r);
 
 
         // Act & assert
@@ -89,29 +85,31 @@ public class ReservationServiceTest {
         reservationService.createReservation(r);
     }
 
-//    @Test
-//    public void listEmployee_validRequest() {
-//
-//        //Arrange
-//
-//        Reservation reservation = new Reservation();
-//
-//        reservation.setUniqueId(UUID.randomUUID());
-//        reservation.setBarberName("Carlos");
-//        reservation.setClientName("Hichem");
-//        reservation.setDate("15/10/2020");
-//        reservation.setTime("12:00");
-//
-//
-//        ReservationService reservationService = new ReservationService(reservationRepository);
-//
-//
-//        // ACT & ASSERT
-//
-//        Mockito.when(reservationRepository.findAll()).thenReturn(List.of(reservation));
-//
-//        assertEquals(List.of(reservation), reservationService.getListEmployer());
-//
-//
-//    }
+    @Test
+    public void listReservation_validRequest() {
+
+        //Arrange
+
+        Reservation reservation = new Reservation();
+
+        reservation.setUniqueId(UUID.randomUUID());
+        reservation.setBarberName("Carlos");
+        reservation.setClientName("Hichem");
+        reservation.setDate("15/10/2020");
+        reservation.setTime("12:00");
+
+
+        ReservationService reservationService = new ReservationService(reservationRepository);
+
+
+        // ACT & ASSERT
+
+        Mockito.when(reservationRepository.findAll()).thenReturn(List.of(reservation));
+
+       // assertEquals(List.of(reservation), reservationService.getListReservation());
+
+        assertNotNull(reservationService.getListReservation());
+
+
+    }
 }

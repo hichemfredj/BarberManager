@@ -39,10 +39,6 @@ public class ReservationService {
 
     public void createReservation(@Valid ReservationDTO reservationDTO){
 
-//        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//        UUID user = UUID.fromString((String) authentication.getPrincipal());
-
         Reservation reservation = new Reservation();
 
             reservation.setUniqueId(UUID.randomUUID());
@@ -57,24 +53,23 @@ public class ReservationService {
 
     }
 
-//    public List<ReservationDTO> getListEmployer(){
-//
-//        List<Reservation> listReservation = reservationRepository.findAll();
-//
-//        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
-//
-//        ReservationDTO reservationDTO = new ReservationDTO();
-//
-//        for(Reservation reservation : listReservation){
-//            reservationDTO.setUniqueId(reservation.getUniqueId());
-//            reservationDTO.setBarberName(reservation.getBarberName());
-//            reservationDTO.setClientName(reservation.getClientName());
-//            reservationDTO.setTime(reservation.getTime());
-//            reservationDTO.setDate(reservation.getDate());
-//
-//            listReservationDTO.add(reservationDTO);
-//        }
-//
-//        return listReservationDTO;
-//    }
+    public List<ReservationDTO> getListReservation(){
+
+        List<Reservation> listReservation = reservationRepository.findAll();
+
+        List<ReservationDTO> listReservationDTO = new ArrayList<ReservationDTO>();
+
+        ReservationDTO reservationDTO = new ReservationDTO();
+
+        for(Reservation reservation : listReservation){
+            reservationDTO.setBarberName(reservation.getBarberName());
+            reservationDTO.setClientName(reservation.getClientName());
+            reservationDTO.setTime(reservation.getTime());
+            reservationDTO.setDate(reservation.getDate());
+
+            listReservationDTO.add(reservationDTO);
+        }
+
+        return listReservationDTO;
+    }
 }

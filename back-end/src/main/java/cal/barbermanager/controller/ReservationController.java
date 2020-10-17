@@ -45,13 +45,14 @@ public class ReservationController {
     }
 
     //
-    // GET
+    //  GET
     //
 
-//    @PreAuthorize("hasAuthority('CLIENT')")
-//    @GetMapping("list-reservation")
-//    public List<ReservationDTO> getListReservation(){
-//        return reservationService.getListEmployer();
-//    }
+
+    @PreAuthorize("hasAuthority('CLIENT')")
+    @GetMapping("list-reservation")
+    public List<ReservationDTO> getListReservation(){
+        return reservationService.getListReservation();
+    }
 
 }
