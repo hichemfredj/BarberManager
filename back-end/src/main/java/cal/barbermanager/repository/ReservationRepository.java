@@ -13,4 +13,5 @@ public interface ReservationRepository extends MongoRepository<Reservation, UUID
     List<Reservation> findByEmployer(UUID barberId);
     List<Reservation> findByClient(UUID clientId);
 
+    List<Reservation> findByDateAndEmployer(Object any, Object any1);
 }

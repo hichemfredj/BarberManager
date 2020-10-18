@@ -109,4 +109,9 @@ public class ReservationService {
         return listReservation;
 
     }
+
+    public List<Reservation> getListReservationByDateAndEmployer(String date, UUID employer) {
+        List<Reservation> listReservation = reservationRepository.findByDateAndEmployer(date, employer);
+        return listReservation;
+    }
 }

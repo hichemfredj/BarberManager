@@ -69,4 +69,14 @@ public class ReservationController {
 
     }
 
+    @GetMapping("list-reservation/reservation/{date}/{employer}")
+    public List<Reservation> getReservationByClientId(@PathVariable String date, @PathVariable UUID employer){
+
+        return reservationService.getListReservationByDateAndEmployer(date,employer);
+
+    }
+
+
+
+
 }

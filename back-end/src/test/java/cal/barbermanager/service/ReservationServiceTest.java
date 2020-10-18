@@ -167,9 +167,38 @@ public class ReservationServiceTest {
         // ACT & ASSERT
 
         Mockito.when(reservationRepository.findByClient(Mockito.any())).thenReturn(List.of(reservation));
-        
+
 
         assertNotNull(reservationService.getListReservationByClientId(reservation.getClient()));
+
+
+    }
+
+    @Test
+    public void listReservationDate_validRequest() {
+
+        //Arrange
+
+        Reservation reservation = new Reservation();
+
+        reservation.setUniqueId(UUID.randomUUID());
+        reservation.setClient(UUID.randomUUID());
+        reservation.setEmployer(UUID.randomUUID());
+        reservation.setBarberName("Carlos");
+        reservation.setClientName("Hichem");
+        reservation.setDate("2020/10/18");
+        reservation.setTime("12:00");
+
+
+        ReservationService reservationService = new ReservationService(reservationRepository);
+
+
+        // ACT & ASSERT
+
+        Mockito.when(reservationRepository.findByDateAndEmployer(Mockito.any(), Mockito.any())).thenReturn(List.of(reservation));
+
+
+        assertNotNull(reservationService.getListReservationByDateAndEmployer(reservation.getDate(), reservation.getEmployer()));
 
 
     }

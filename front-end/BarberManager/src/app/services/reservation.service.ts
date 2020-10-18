@@ -26,4 +26,7 @@ export class ReservationService {
   getListReservationByClientId(clientId:string){
     return this.httpClient.get('http://localhost:9090/reservation/list-reservation/client/'+clientId);
   }
+  getListReservationByDateAndByEmployer(date:string, employer:string) : Observable<any>{
+    return this.httpClient.get('http://localhost:9090/reservation/list-reservation/reservation/'+date+'/'+employer);
+  }
 }
