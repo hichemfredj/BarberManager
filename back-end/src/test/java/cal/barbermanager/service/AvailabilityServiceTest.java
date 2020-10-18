@@ -2,6 +2,7 @@ package cal.barbermanager.service;
 
 import cal.barbermanager.dto.AvailabilityCreation;
 import cal.barbermanager.model.Availability;
+import cal.barbermanager.model.Reservation;
 import cal.barbermanager.model.User;
 import cal.barbermanager.repository.AvailabilityRepository;
 import cal.barbermanager.repository.UserRepository;
@@ -84,5 +85,32 @@ public class AvailabilityServiceTest {
         });
 
         availabalityService.createAvailability(availabilityCreation);
+    }
+
+    @Test
+    public void availability_validRequest() {
+
+        //Arrange
+
+        Availability a = new Availability();
+
+        a.setEmployer(UUID.randomUUID());
+        a.setDay("Lundi");
+        a.setStartTime("10:00");
+        a.setEndTime("20:00");
+        a.setAvailable(true);
+
+
+        AvailabalityService availabalityService = new AvailabalityService(availabilityRepository);
+
+
+        // ACT & ASSERT
+
+        Mockito.when(availabilityRepository.findByDayAndEmployer(Mockito.any(), Mockito.any())).thenReturn(a);
+
+
+        assertEquals(availabalityService.getAvailaibility(a.getDay(), a.getEmployer()), a);
+
+
     }
 }

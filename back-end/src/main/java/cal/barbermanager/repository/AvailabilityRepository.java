@@ -9,6 +9,6 @@ import java.util.UUID;
 @Repository
 public interface AvailabilityRepository extends MongoRepository<Availability, UUID> {
 
-    List<Availability> findAllByDay(String day);
+    Availability findByDayAndEmployer(String day, UUID employer);
 
 }

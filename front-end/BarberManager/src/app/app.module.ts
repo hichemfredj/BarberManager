@@ -30,6 +30,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
+import {DatePipe} from '@angular/common';
 
 
 @NgModule({
@@ -77,8 +78,9 @@ import { ListReservationComponent } from './components/list-reservation/list-res
     BrowserAnimationsModule
   ],
   providers: [
+    DatePipe,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-    {provide : LOCALE_ID, useValue: 'en-GB' }
+    {provide : LOCALE_ID, useValue: 'en-CA' }
   ],
   bootstrap: [AppComponent,AvailabilityComponent]
 })

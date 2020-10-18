@@ -14,12 +14,14 @@
     <mat-form-field appearance="fill">
       <mat-label>Select time</mat-label>
       <mat-select [(value)]="timeSelected" [(ngModel)]="timeSelected">
-        <div class="div" *ngFor="let time of time let i = index">
-
-          <mat-option value="{{time}}">{{time}}</mat-option>
+        <div class="div" *ngFor="let time of secondArrayTime let i = index">
+          <mat-option value="{{time}}" >{{time}}</mat-option>
         </div>
       </mat-select>
     </mat-form-field>
+    <mat-error *ngIf="checkEmpty()">
+      Aucune place deisponible, veuillez selectionnez une autre date !
+    </mat-error>
     <p>Please Confirm Before Submiting your apointement</p>
     <button mat-raised-button (click)="onConfirm()">Confirm</button>
 

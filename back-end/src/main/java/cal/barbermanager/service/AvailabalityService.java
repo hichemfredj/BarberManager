@@ -2,6 +2,7 @@ package cal.barbermanager.service;
 
 import cal.barbermanager.dto.AvailabilityCreation;
 import cal.barbermanager.model.Availability;
+import cal.barbermanager.model.Reservation;
 import cal.barbermanager.repository.AvailabilityRepository;
 import cal.barbermanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +61,10 @@ public class AvailabalityService {
         }
 
 
+    }
+
+    public Availability getAvailaibility(String date, UUID employer){
+        Availability availability = availabilityRepository.findByDayAndEmployer(date, employer);
+        return availability;
     }
 }
