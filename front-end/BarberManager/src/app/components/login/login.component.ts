@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('UserType', data.userType);
           this.authenticated = true;
           this.loginService.isAuth = true;
-          this.router.navigate(['/dashbord']);
+          this.router.navigate(['/list-reservation']);
           this.appComp.setRole(localStorage.getItem('UserType'))
         }
       },error=>{

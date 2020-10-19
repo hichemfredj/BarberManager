@@ -155,14 +155,6 @@ export class ReservationComponent implements OnInit {
   getDate(){
     return this.date;
   }
-
-
-
-  
-  // forloop dans le tableau de time et eliminer 
-  // tt les times plus petit que le start time et plus grand que le end time
-  
-  
   
   onSubmitForm(){
     const reservationForm : ReservationForm = {

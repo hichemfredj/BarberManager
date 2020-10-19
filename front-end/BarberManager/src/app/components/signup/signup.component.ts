@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
       }
       if(this.isEmployer){
         this.registerService.registerEmployer(signupForm).subscribe(()=>{
-        
+          this.route.navigate(['/login']);
         },error=>{
             
             if(error.error.errors[0].defaultMessage){

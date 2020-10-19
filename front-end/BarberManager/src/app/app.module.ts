@@ -8,8 +8,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { environment } from 'src/environments/environment';
-import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from  '@angular/material/toolbar';
 import { MatIconModule} from  '@angular/material/icon';
@@ -27,18 +25,15 @@ import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { ListEmployeeComponent } from './components/list-employee/list-employee.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ListReservationComponent } from './components/list-reservation/list-reservation.component';
 import {DatePipe} from '@angular/common';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashbordComponent,
     AvailabilityComponent,
     ListEmployeeComponent,
     ReservationComponent,
