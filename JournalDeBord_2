@@ -1,0 +1,54 @@
+
+26 + 27 Oct
+
+   Tâches réalisé
+     - host mongo db to the cloud using MongoDB Atlas (cluster)
+        - limit connection to the cluster
+        - add ip address
+        - create db user
+        - select prefered connection method
+        - now we have a new link the point to our db and we have to give to our back-end
+        
+   Trello
+      J’ai réaliser la tâche “Host db to the cloud”
+      
+      
+    Activité d’apprentissage
+        Host mongoDb with cluster
+            https://docs.atlas.mongodb.com/connect-to-cluster/
+
+
+28 + 29 Oct
+
+   Tâches réalisé
+     - Create an instance on aws using Elastic beanstalk service to deploy my java spring boot app
+     - now we have a new link the point to our back-end and we have to give to our front-end
+        
+   Trello
+      J’ai réaliser la tâche “host back-end with amazon beanstalk”
+      
+      
+    Activité d’apprentissage
+        host back-end with amazon beanstalk
+            https://www.youtube.com/watch?v=KEH0-rHHNxM&t=70s
+            https://developer.okta.com/blog/2019/08/07/deploy-a-spring-boot-app-with-aws-elastic-beanstalk
+
+
+
+31 Oct + 1 Nov
+
+   Tâches réalisé
+     - Create a bucket on aws using S3 service to deploy my react app
+     - now we have a domaine and we are hosting our front-end app, we need to give our domain link to the cors configuration to allow request from the domain
+        
+   Trello
+      J’ai réaliser la tâche “host front-end with S3 (using bucket)”
+      
+      
+    Activité d’apprentissage
+        host front-end with S3 (using bucket)
+            https://dev.to/oyetoket/how-to-deploy-your-frontend-application-on-aws-s3-31m9
+    
+    Difficulté
+        Requete vers le back-end
+            A chaque fois jeffectue une requete de mon front-end vers mon back-end il m'autorise pas.
