@@ -52,3 +52,96 @@
     Difficulté
         Requete vers le back-end
             A chaque fois jeffectue une requete de mon front-end vers mon back-end il m'autorise pas.
+            
+            
+
+2 Nov
+
+   Tâches réalisé
+     - Apprendre Docker (C'est quoi Docker),
+     - Installation De Docker,
+     - Difference between images and containers,
+     - Pulling docker image, 
+     - Running Containers, 
+     - Exposing Ports, 
+     - Exposing Multiple Ports, 
+     - Managing Containers, 
+     - Naiming Containers.
+        
+   Trello
+     - J’ai réaliser la sous-tâche “Learn Docker(Containers)”
+      
+      
+    Activité d’apprentissage
+        - Docker Tutorial for Beginners [Full Course in 3 Hours]
+            https://www.youtube.com/watch?v=3c-iBn73dDE
+           
+           
+           
+           
+ 3 Nov
+
+   Tâches réalisé
+     - What are Volumes, 
+     - Volumes between host and containers, 
+     - Customize website, 
+     - Sharing Volumes Between Containers.
+        
+   Trello
+     - J’ai réaliser la tâche “Learn Docker(Volumes)”
+      
+      
+    Activité d’apprentissage
+        - Docker Tutorial for Beginners [Full Course in 3 Hours]
+            https://www.youtube.com/watch?v=3c-iBn73dDE
+            
+                        
+ 4 Nov
+
+   Tâches réalisé
+      - Dockerfile, 
+      - creating Dockerfile, 
+      - Building docker images and running containers from dockerfile.
+        
+   Trello
+     - J’ai réaliser la tâche “Learn Docker(Images and Docker Files)”
+      
+      
+    Activité d’apprentissage
+        - Docker Tutorial for Beginners [Full Course in 3 Hours]
+            https://www.youtube.com/watch?v=3c-iBn73dDE
+ 
+ 
+
+
+ 5 + 6 Nov
+
+   Tâches réalisé
+      - Creating API using Nodejs & Expressjs API
+      - Creating Docker Image for Expressjs API
+        
+   Trello
+     - J’ai réaliser la tâche “Learn Docker(Own Images)”
+      
+      
+    Activité d’apprentissage
+        - Docker Tutorial for Beginners [Full Course in 3 Hours]
+            https://www.youtube.com/watch?v=3c-iBn73dDE
+ 
+ 
+  7 + 8 Nov
+
+   Tâches réalisé
+      - Running Express API Image
+      - Use Tags and Versions, 
+      - Running Containers with Tags and Versions, 
+      - Tagging Images, 
+      - Running Containers with Different Tags.
+        
+   Trello
+     - J’ai réaliser la tâche “Learn Docker(Tags and Versions)”
+      
+      
+    Activité d’apprentissage
+        - Docker Tutorial for Beginners [Full Course in 3 Hours]
+            https://www.youtube.com/watch?v=3c-iBn73dDE
