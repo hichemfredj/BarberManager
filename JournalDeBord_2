@@ -145,3 +145,63 @@
     Activité d’apprentissage
         - Docker Tutorial for Beginners [Full Course in 3 Hours]
             https://www.youtube.com/watch?v=3c-iBn73dDE
+        
+        
+        
+9 + 10 Nov
+
+   Tâches réalisé
+      - Dockerize Back-end
+      - Dockerize front-end, 
+        
+   Trello
+     - J’ai réaliser la tâche “Dockerize my full stack-app”
+      
+      
+    Activité d’apprentissage
+        - Voici les 2 tutoriel qui m'ont aider à réaliser ma tâche :
+            https://www.youtube.com/watch?v=e3YERpG2rMs
+            https://www.youtube.com/watch?v=Sm8GbC02MlE&t=266s
+     
+     
+     
+     
+ 12 + 13 Nov
+
+   Tâches réalisé
+      - Learn ec2 instance
+      - Setup aws vm,
+      - Install Docker and docker-compose
+      - Push Images to docker hub
+      - Pull images from docker hub into my instance
+      - Run docker-compose
+        
+   Trello
+     - J’ai réaliser la tâche “Deploy my fullstack app to aws ec2”
+      
+      
+    Activité d’apprentissage
+        - Voici les tutoriel qui ma aider à réaliser ma tâche :
+                  https://medium.com/@umairnadeem/deploy-to-aws-using-docker-compose-simple-210d71f43e67
+                
+                
+                
+  
+   14 + 15 Nov
+
+   Tâches réalisé
+      - Learn azure vm
+      - Setup azure vm,
+      - Install Docker and docker-compose
+      - Push Images to docker hub
+      - Pull images from docker hub into my vm
+      - Run docker-compose
+        
+   Trello
+     - J’ai réaliser la tâche “Deploy my fullstack app to azure vm”
+      
+      
+    Activité d’apprentissage
+        - Voici les tutoriels qui m<ont aider à réaliser ma tâche :
+                  https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart
+                  https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#provide-an-ssh-public-key-when-deploying-a-vm
