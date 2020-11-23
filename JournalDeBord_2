@@ -32,6 +32,13 @@
         host back-end with amazon beanstalk
             https://www.youtube.com/watch?v=KEH0-rHHNxM&t=70s
             https://developer.okta.com/blog/2019/08/07/deploy-a-spring-boot-app-with-aws-elastic-beanstalk
+          
+          
+          
+          
+          
+          
+     
 
 
 
@@ -205,3 +212,43 @@
         - Voici les tutoriels qui m<ont aider à réaliser ma tâche :
                   https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart
                   https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#provide-an-ssh-public-key-when-deploying-a-vm
+                  
+ 
+ 
+17 + 18 + 19 Nov
+
+   Tâches réalisé
+     - Apprendre Git Actions
+        
+   Trello
+      J’ai réaliser la tâche “Learn git actions”
+      
+      
+    Activité d’apprentissage
+        Apprendre git actions a partir de different tutoriel
+            https://www.youtube.com/watch?v=R8_veQiYBjI&t=1740s
+            https://www.youtube.com/watch?v=eB0nUzAI7M8
+            https://www.youtube.com/watch?v=F3wZTDmHCFA
+
+
+20 Nov
+
+   Tâches réalisé
+     - Automatiser des task quand une action survient
+        
+   Trello
+      J’ai réaliser la tâche “Automate some commande line when an event happens”
+      
+ 
+20 + 21 Nov
+
+   Tâches réalisé
+     - Automatiser le build et le push d'une image vers docker hub
+        
+   Trello
+      J’ai réaliser la tâche “Automate building and pushing an image to docker hub when an event happens”
+      
+      
+            
+            
+
